@@ -1,0 +1,104 @@
+﻿@model Cliente
+@{
+    ViewData["Title"] = "Cadastro de Cliente";
+}
+<form asp-controller="Home" asp-action="CadastroCliente" method="post">
+    <main role="main">
+        <section class="container" style="margin-top: 50px">
+            <div class="row">
+                <aside class="col-sm-6">
+                    <div id="code_register_1">
+                        <div class="card">
+                            <header class="card-header">
+                                <a asp-controller="Home" asp-action="Login" class="float-right btn btn-outline-primary mt-1">Acessar</a>
+                                <h4 class="card-title mt-2">Cadastro de Cliente</h4>
+                            </header>
+                            <article class="card-body">
+                                @if (TempData["MSG_S"] != null)
+                                {
+                                    <p class="alert alert-success text-center">@Html.Raw(TempData["MSG_S"])</p>
+                                }    
+                                <div class="form-row">
+                                    @* Nome *@
+                                    <div class="col form-group">
+                                        <label asp-for="Nome" ></label>
+                                        <input asp-for="Nome" class="form-control" placeholder="">
+                                        <span asp-validation-for="Nome"></span>
+                                    </div> 
+
+                                    @* Nascimento *@
+                                    <div class="col form-group">
+                                        <label asp-for="Nascimento"></label>
+                                        <input asp-for="Nascimento" class="form-control" placeholder="">
+                                        <span asp-validation-for="Nascimento"></span>
+                                    </div> 
+                                </div> 
+
+                                <div class="form-row">
+                                    @* CPF *@
+                                    <div class="col form-group">
+                                        <label asp-for="CPF"></label>
+                                        <input asp-for="CPF" class="form-control" placeholder="">
+                                        <span asp-validation-for="CPF"></span>
+                                    </div> 
+
+                                        @* Celular *@
+                                    <div class="form-row">
+                                        <div class="col form-group">
+                                            <label asp-for="Celular"></label>
+                                            <input asp-for="Celular" class="form-control">
+                                            <span asp-validation-for="Celular"></span>
+                                        </div> 
+                                    </div>
+                                </div>
+
+                                @* Gênero *@
+                                <div class="form-group">
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" asp-for="Genero" value="M">
+                                        <span class="form-check-label"> Masculino </span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" asp-for="Genero" value="F">
+                                        <span class="form-check-label"> Feminino</span>
+                                    </label>
+                                    <span asp-validation-for="Genero"></span>
+                                </div>
+                                @*<div class="form-group">
+                                    @foreach (var genero in Model.Generos)
+                                    {
+                                        <label class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" asp-for="Genero" value="@genero" />
+                                            <span class="form-check-label"> @genero </span>
+                                        </label>
+                                    }
+                                </div>*@
+                                
+                                @* E-mail *@
+                                    <div class="form-group">
+                                        <label asp-for="Email"></label>
+                                        <input asp-for="Email" class="form-control" placeholder="">
+                                        <span asp-validation-for="Email"></span>
+                                        <small class="form-text text-muted">Nunca compartilharemos seu e-mail com mais ninguém.</small>
+                                    </div>
+
+                                @* Senha *@
+                                <div class="form-group">
+                                    <label asp-for="Senha"></label>
+                                    <input asp-for="Senha" class="form-control">
+                                    <span asp-validation-for="Senha"></span>
+                                </div> 
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block"> Cadastre-se </button>
+                                </div> 
+                                <small class="text-muted">Ao clicar no botão 'Cadastre-se', você confirma que aceita nossos Termos de uso e política de privacidade.</small>
+                            </article>
+                            <div class="border-top card-body text-center">Já tem registro? <a asp-controller="Home" asp-action="Login">Acessar</a></div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+</form>
