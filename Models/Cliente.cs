@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Loja.Models
 {
@@ -38,5 +39,14 @@ namespace Loja.Models
         [MinLength(6, ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E002")]
         [DataType(DataType.Password)]
         public string Senha { get; set; }
+
+        [NotMapped]
+        [Compare("Senha", ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E005")]
+        [Display(Name = "Confirme a senha")]
+        [DataType(DataType.Password)]
+        public string ConfirmacaoSenha { get; set; }
+
+        [Display(Name = "Situação")]
+        public string Situacao { get; set; }
     }
 }

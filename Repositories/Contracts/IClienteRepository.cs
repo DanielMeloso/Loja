@@ -1,5 +1,6 @@
 ﻿using Loja.Models;
 using System.Collections.Generic;
+using X.PagedList;
 
 namespace Loja.Repositories.Contracts
 {
@@ -10,6 +11,6 @@ namespace Loja.Repositories.Contracts
         void Atualizar(Cliente cliente);
         void Excluir(int Id);
         Cliente ObterCliente(int Id);
-        IEnumerable<Cliente> ObterTodosClientes();
+        IPagedList<Cliente> ObterTodosClientes(int? pagina, string pesquisa);
     }
 }

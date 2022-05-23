@@ -15,7 +15,7 @@ namespace Loja.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Nascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Sexo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Genero = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CPF = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Celular = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
