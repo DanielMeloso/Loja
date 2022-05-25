@@ -1,6 +1,7 @@
 ﻿using Loja.Database;
 using Loja.Models;
 using Loja.Repositories.Contracts;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Loja.Repositories
@@ -17,6 +18,17 @@ namespace Loja.Repositories
         {
             _banco.Add(imagem);
             _banco.SaveChanges();
+        }
+
+        public void CadastrarImagens(List<Imagem> listaImagens, int produtoId)
+        {
+            if (listaImagens != null && listaImagens.Count > 0)
+            {
+                foreach (var imagem in listaImagens)
+                {
+                    Cadastrar(imagem);
+                }
+            }
         }
 
         public void Excluir(int id)
@@ -40,5 +52,6 @@ namespace Loja.Repositories
             _banco.SaveChanges();
         }
 
+        
     }
 }

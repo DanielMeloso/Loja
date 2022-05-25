@@ -17,7 +17,10 @@ namespace Loja.Libraries.Middleware
 
         public async Task Invoke(HttpContext context)
         {
-            if (HttpMethods.IsPost(context.Request.Method))
+            // não validar requisições POST para requisições Ajax que contenham arquivos
+            var cabecalho = context.Request.Headers["x-requested-with"];
+            bool ajax = cabecalho == "XMLHttpRequest" ? true : false;
+            if (HttpMethods.IsPost(context.Request.Method) && !(context.Request.Form.Files.Count == 1 && ajax))
             {
                 await _antiforgery.ValidateRequestAsync(context);
             }
