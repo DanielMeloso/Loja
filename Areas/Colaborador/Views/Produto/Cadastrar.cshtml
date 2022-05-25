@@ -1,0 +1,117 @@
+﻿@model Loja.Models.Produto
+@{
+    ViewData["Title"] = "Cadastro de Produto";
+}
+<h1>Cadastro de Produto</h1>
+
+<form method="post">
+
+
+    <div class="row">
+        <div class="mb-3 col-md-4">
+            <label asp-for="CategoriaId"class="form-label"></label>
+            <select asp-for="CategoriaId" class="form-control" asp-items="@ViewBag.Categorias"> 
+                <option value="">Selecione</option>
+            </select>
+            <span asp-validation-for="CategoriaId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 col-md-8">
+            <label asp-for="Nome"class="form-label"></label>
+            <input asp-for="Nome" class="form-control" placeholder="Nome do Produto"/>
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="Descricao"class="form-label"></label>
+        <textarea asp-for="Descricao" class="form-control"></textarea>
+        <span asp-validation-for="Descricao" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <div class="mb-3 col-md-6">
+            <label asp-for="Valor"class="form-label"></label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">R$</div>
+                </div>
+                <input asp-for="Valor" class="form-control dinheiro" placeholder="Preço"/>
+            </div>
+            <span asp-validation-for="Valor" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 col-md-6">
+            <label asp-for="Quantidade"class="form-label"></label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">unid.</div>
+                </div>
+                <input asp-for="Quantidade" class="form-control" placeholder="Quantidade em estoque"/>
+            </div>
+            <span asp-validation-for="Quantidade" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <h3>Informações para cálculo do frete</h3>
+
+    <div class="row">
+        <div class="mb-3 col-md-3">
+            <label asp-for="Peso"class="form-label"></label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">Kg</div>
+                </div>
+                <input asp-for="Peso" class="form-control" placeholder="Peso"/>
+            </div>
+            <span asp-validation-for="Peso" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 col-md-3">
+            <label asp-for="Largura"class="form-label"></label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">cm</div>
+                </div>
+                <input asp-for="Largura" class="form-control" placeholder="Largura"/>
+            </div>
+            <span asp-validation-for="Largura" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 col-md-3">
+            <label asp-for="Altura"class="form-label"></label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">cm</div>
+                </div>
+                <input asp-for="Altura" class="form-control" placeholder="Peso"/>
+            </div>
+            <span asp-validation-for="Altura" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 col-md-3">
+            <label asp-for="Comprimento"class="form-label"></label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">cm</div>
+                </div>
+                <input asp-for="Comprimento" class="form-control" placeholder="Peso"/>
+            </div>
+            <span asp-validation-for="Comprimento" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row Imagens">
+        @for (int i = 0; i<8; i++)
+        {
+            <div class="col-md-3">
+                <img src="~/img/sem-foto.jpeg" class="img-thumbnail" />
+                <div class="btn btn-danger btn-imagem-excluir">X</div>
+            </div>
+        }
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Cadastrar</button> <a asp-action="Index" class="btn btn-info">Voltar</a>
+</form>

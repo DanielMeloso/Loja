@@ -25,6 +25,7 @@
     <!-- Custom styles for this template -->
     <link href="~/resources/lib/dashboard/dashboard.css" rel="stylesheet">
     <link href="~/resources/lib/paged-list/PagedList.css" rel="stylesheet" type="text/css">
+    <link href="~/css/StyleSheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
@@ -67,7 +68,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" asp-area="Colaborador" asp-controller="Produto" asp-action="Index">
                                 <span data-feather="shopping-cart"></span>
                                 Produtos
                             </a>
@@ -135,11 +136,12 @@
         </div>
     </div>
     <script src="~/resources/lib/jquery3.3.1/jquery-3.3.1.min.js"></script>
-    <script src="~/js/Actions.js"></script>
     <script src="~/resources/lib/bootstrap-4.2.1-dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/resources/lib/feather/feather.js"></script>
     <script src="~/resources/lib/charts/charts.js"></script>
     <script src="~/resources/lib/dashboard/dashboard.js"></script>
+    <script src="~/resources/lib/mask/jquery.mask.min.js"></script>
+    <script src="~/js/Actions.js"></script>
 </body>
 
 </html>

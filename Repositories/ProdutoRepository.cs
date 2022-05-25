@@ -1,6 +1,7 @@
 ﻿using Loja.Database;
 using Loja.Models;
 using Loja.Repositories.Contracts;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
 using X.PagedList;
@@ -39,7 +40,10 @@ namespace Loja.Repositories
 
         public Produto ObterProduto(int id)
         {
-            return _banco.Produtos.Find(id);
+            return _banco.Produtos
+                .Include(x => x.Imagens)
+                .Include(x => x.Categorias)
+                .FirstOrDefault(x => x.Id == id);
         }
 
         public IPagedList<Produto> ObterTodosProdutos(int? pagina, string pesquisa)
@@ -52,7 +56,9 @@ namespace Loja.Repositories
                 bancoProdutos = bancoProdutos.Where(x => x.Nome.Contains(pesquisa.Trim() ));
             }
 
-            return bancoProdutos.ToPagedList(NumeroPagina, _configuration.GetValue<int>("RegistroPorPagina"));
+            return bancoProdutos
+                .Include(x => x.Categorias)
+                .Include(x => x.Imagens).ToPagedList(NumeroPagina, _configuration.GetValue<int>("RegistroPorPagina"));
         }
     }
 }

@@ -1,15 +1,16 @@
-﻿@model X.PagedList.IPagedList<Loja.Models.Cliente>
+﻿@model X.PagedList.IPagedList<Loja.Models.Produto>
 @{
-    ViewData["Title"] = "Clientes";
+    ViewData["Title"] = "Produtos";
     var pesquisa = Context.Request.Query["pesquisa"];
 }
-<h1>Lista de Clientes</h1>
+<h1>Lista de Produtos</h1>
 
+<a asp-action="Cadastrar" class="btn btn-primary">Novo Produto</a><br /><br />
 <br /><br />
 <form method="get">
     <div class="mb-3">
         <label for="pesquisa" class="form-label"></label>
-        <input type="text" name="pesquisa" id="pesquisa" class="form-control" value="@pesquisa" placeholder="Digite o nome ou e-mail do cliente">
+        <input type="text" name="pesquisa" id="pesquisa" class="form-control" value="@pesquisa" placeholder="Digite o nome do produto">
     </div>
     <button type="submit" class="btn btn-primary">Pesquisar</button>
 </form>
@@ -27,26 +28,22 @@
                 <tr>
                     <th scope="col">@Html.DisplayNameFor(model => model.First().Id)</th>
                     <th scope="col">@Html.DisplayNameFor(model => model.First().Nome)</th>
-                    <th scope="col">@Html.DisplayNameFor(model => model.First().Email)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.First().Categorias)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.First().Valor)</th>
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var cliente in Model)
+                @foreach (var produto in Model)
                 {
                     <tr>
-                        <th scope="row">@cliente.Id</th>
-                        <td>@cliente.Nome</td>
-                        <td>@cliente.Email</td>
+                        <th scope="row">@produto.Id</th>
+                        <td>@produto.Nome</td>
+                        <td>@produto.Categorias?.Nome</td>
+                        <td>@produto.Valor</td>
                         <td>
-                            @if (cliente.Situacao == "A")
-                            {
-                                <a asp-action="AtivarDesativar" asp-controller="Cliente" asp-area="Colaborador"  asp-route-id="@cliente.Id" class="btn btn-danger">Desativar</a>
-                            }
-                            else
-                            {
-                                <a asp-action="AtivarDesativar" asp-controller="Cliente" asp-area="Colaborador" asp-route-id="@cliente.Id" class="btn btn-secondary">Ativar</a>
-                            }
+                            <a asp-action="Atualizar" asp-route-id="@produto.Id" class="btn btn-secondary">Atualizar</a>
+                            <a asp-action="Excluir" asp-route-id="@produto.Id" class="btn btn-danger">Excluir</a>
                         </td>
                     </tr>
                 }

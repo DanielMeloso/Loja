@@ -147,5 +147,5 @@ namespace Loja.Controllers
 }
 
 /*
- * TODO - Continuar em cap.15 aula 1
+ * TODO - Continuar em cap.15 aula 20
  */
