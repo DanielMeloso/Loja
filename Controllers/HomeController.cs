@@ -47,6 +47,11 @@ namespace Loja.Controllers
             }
         }
 
+        public IActionResult Categoria()
+        {
+            return View();
+        }
+
         public IActionResult Contato()
         {
             return View();
@@ -147,5 +152,5 @@ namespace Loja.Controllers
 }
 
 /*
- * TODO - Continuar em cap.15 aula 20
+ * TODO - Continuar em cap.16 aula 1
  */

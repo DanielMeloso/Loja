@@ -30,6 +30,7 @@ namespace Loja.Models
         [Display(Name = "Categoria")]
         [Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
         public int CategoriaId { get; set; }
+
         [ForeignKey("CategoriaId")]
         public virtual Categoria Categorias { get; set; }
 

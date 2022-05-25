@@ -60,7 +60,9 @@ namespace Loja
             });
             services.AddScoped<GerenciarEmail>();
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(options =>
+                options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(x => "O campo deve ser preenchido!")
+                );
             string connection = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Loja;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             services.AddDbContext<LojaContext>(options => options.UseSqlServer(connection));
         }
