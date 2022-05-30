@@ -48,13 +48,32 @@ namespace Loja.Repositories
 
         public IPagedList<Produto> ObterTodosProdutos(int? pagina, string pesquisa)
         {
+            return ObterTodosProdutos(pagina, pesquisa, "A");
+        }
+
+        public IPagedList<Produto> ObterTodosProdutos(int? pagina, string pesquisa, string ordenacao)
+        {
             int NumeroPagina = pagina ?? 1;
             var bancoProdutos = _banco.Produtos.AsQueryable();
 
             if (!string.IsNullOrEmpty(pesquisa))
             {
-                bancoProdutos = bancoProdutos.Where(x => x.Nome.Contains(pesquisa.Trim() ));
+                bancoProdutos = bancoProdutos.Where(x => x.Nome.Contains(pesquisa.Trim()));
             }
+
+            if (ordenacao == "A")
+            {
+                bancoProdutos = bancoProdutos.OrderBy(x => x.Nome);
+            }
+            if (ordenacao == "ME")
+            {
+                bancoProdutos = bancoProdutos.OrderBy(x => x.Valor);
+            }
+            if (ordenacao == "MA")
+            {
+                bancoProdutos = bancoProdutos.OrderByDescending(x => x.Valor);
+            }
+
 
             return bancoProdutos
                 .Include(x => x.Categorias)

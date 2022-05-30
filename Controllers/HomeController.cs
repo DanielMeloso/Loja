@@ -2,6 +2,7 @@
 using Loja.Libraries.Filtro;
 using Loja.Libraries.Login;
 using Loja.Models;
+using Loja.Models.ViewModels;
 using Loja.Repositories.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,12 +19,14 @@ namespace Loja.Controllers
         private LoginCliente _loginCliente;
         private INewsletterRepository _newsletterRepository;
         private GerenciarEmail _gerenciarEmail;
-        public HomeController(IClienteRepository clienteRepository, INewsletterRepository newsletterRepository, LoginCliente loginCliente, GerenciarEmail gerenciarEmail)
+        private IProdutoRepository _produtoRepository;
+        public HomeController(IClienteRepository clienteRepository, INewsletterRepository newsletterRepository, LoginCliente loginCliente, GerenciarEmail gerenciarEmail, IProdutoRepository produtoRepository)
         {
             _clienteRepository = clienteRepository;
             _loginCliente = loginCliente;
             _newsletterRepository = newsletterRepository;
             _gerenciarEmail = gerenciarEmail;
+            _produtoRepository = produtoRepository;
         }
 
         [HttpGet]
@@ -152,5 +155,5 @@ namespace Loja.Controllers
 }
 
 /*
- * TODO - Continuar em cap.16 aula 1
+ * TODO - Continuar em cap.16 aula 10
  */
