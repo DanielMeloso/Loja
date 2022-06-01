@@ -6,7 +6,7 @@
 @if (categoriasFilho.Count() > 0)
 {
     <li class="dropdown-submenu">
-        <a class="dropdown-item" tabindex="-1" href="#">@categoriaPai.Nome</a>
+        <a class="dropdown-item" tabindex="-1" asp-controller="Produto" asp-action="ListagemCategoria" asp-route-slug="@categoriaPai.Slug">@categoriaPai.Nome</a>
         <ul class="dropdown-menu">
             @foreach (var categoriaFilho in categoriasFilho)
             {
@@ -16,7 +16,7 @@
                     @await Html.PartialAsync("~/Views/Shared/Components/Menu/_Submenu.cshtml", new ViewDataDictionary(ViewData) { { "categoriaPai", categoriaFilho } })
                 } else
                 {
-                    <li class="dropdown-item"><a href="#">@categoriaFilho.Nome</a></li>
+                    <li class="dropdown-item"><a asp-controller="Produto" asp-action="ListagemCategoria" asp-route-slug="@categoriaFilho.Slug">@categoriaFilho.Nome</a></li>
                 }
             }
         </ul>
@@ -24,5 +24,5 @@
 }
 else
 {
-    <li class="dropdown-item"><a href="#">@categoriaPai.Nome</a></li>
+    <li class="dropdown-item"><a asp-controller="Produto" asp-action="ListagemCategoria" asp-route-slug="@categoriaPai.Slug">@categoriaPai.Nome</a></li>
 }

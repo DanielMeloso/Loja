@@ -10,6 +10,8 @@ namespace Loja.Repositories.Contracts
         void Atualizar(Categoria categoria);
         void Excluir(int id);
         Categoria ObterCategoria(int id);
+        Categoria ObterCategoria(string slug);
+        IEnumerable<Categoria> ObterCategoriaRecursivo(Categoria categoriaPai);
         IEnumerable<Categoria> ObterTodasCategorias();
         IPagedList<Categoria> ObterTodasCategorias(int? pagina);
     }

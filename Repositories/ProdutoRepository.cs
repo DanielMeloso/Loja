@@ -3,6 +3,7 @@ using Loja.Models;
 using Loja.Repositories.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 using System.Linq;
 using X.PagedList;
 
@@ -48,10 +49,10 @@ namespace Loja.Repositories
 
         public IPagedList<Produto> ObterTodosProdutos(int? pagina, string pesquisa)
         {
-            return ObterTodosProdutos(pagina, pesquisa, "A");
+            return ObterTodosProdutos(pagina, pesquisa, "A", null);
         }
 
-        public IPagedList<Produto> ObterTodosProdutos(int? pagina, string pesquisa, string ordenacao)
+        public IPagedList<Produto> ObterTodosProdutos(int? pagina, string pesquisa, string ordenacao, IEnumerable<Categoria> categorias)
         {
             int NumeroPagina = pagina ?? 1;
             var bancoProdutos = _banco.Produtos.AsQueryable();
@@ -72,6 +73,11 @@ namespace Loja.Repositories
             if (ordenacao == "MA")
             {
                 bancoProdutos = bancoProdutos.OrderByDescending(x => x.Valor);
+            }
+
+            if (categorias != null && categorias.Count() > 0)
+            {
+                bancoProdutos = bancoProdutos.Where(x => categorias.Select(b => b.Id).Contains(x.CategoriaId));
             }
 
 
