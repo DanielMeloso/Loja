@@ -1,4 +1,4 @@
-﻿using Loja.Models;
+﻿using Loja.Models.ProdutoAgregador;
 using Loja.Repositories.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Loja.Models.ProdutoAgregador;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using X.PagedList;
 

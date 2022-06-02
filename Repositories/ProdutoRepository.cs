@@ -1,5 +1,6 @@
 ﻿using Loja.Database;
 using Loja.Models;
+using Loja.Models.ProdutoAgregador;
 using Loja.Repositories.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

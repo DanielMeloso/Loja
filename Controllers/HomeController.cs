@@ -146,14 +146,9 @@ namespace Loja.Controllers
             } 
             return View();
         }
-
-        public IActionResult CarrinhoCompras()
-        {
-            return View();
-        }
     }
 }
 
 /*
- * TODO - Continuar em cap.16 aula 21
+ * TODO - Continuar em cap.17 aula 16
  */

@@ -1,4 +1,5 @@
 ﻿using Loja.Models;
+using Loja.Models.ProdutoAgregador;
 using Microsoft.EntityFrameworkCore;
 
 namespace Loja.Database

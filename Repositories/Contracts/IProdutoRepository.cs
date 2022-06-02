@@ -1,4 +1,5 @@
 ﻿using Loja.Models;
+using Loja.Models.ProdutoAgregador;
 using System.Collections.Generic;
 using X.PagedList;
 

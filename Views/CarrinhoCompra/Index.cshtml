@@ -1,0 +1,110 @@
+﻿@model List<ProdutoItem>
+@{
+    ViewData["Title"] = "Carrinho de Compras";
+
+}
+
+<div class="container">
+    <section class="container" id="order" style="margin-top: 50px">
+        <h2 class="title-doc">Carrinho de compras </h2>
+        <div id="code_cart">
+            <div class="card">
+                <table class="table table-hover shopping-cart-wrap">
+                    <thead class="text-muted">
+                        <tr>
+                            <th scope="col">Produto</th>
+                            <th scope="col" width="120">Quantidade</th>
+                            <th scope="col" width="120">Preço</th>
+                            <th scope="col" width="200" class="text-right">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var produtoCarrinho in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <figure class="media">
+                                        <div class="img-wrap"><img src="images/items/1.jpg" class="img-thumbnail img-sm"></div>
+                                        <figcaption class="media-body">
+                                            <h6 class="title text-truncate">@produtoCarrinho.Nome </h6>
+                                            <dl class="dlist-inline small">
+                                                <dt>Size: </dt>
+                                                <dd>XXL</dd>
+                                            </dl>
+                                        </figcaption>
+                                    </figure>
+                                </td>
+                                <td class="col-md-2">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-append btn btn-primary" id="basic-addon1">-</span>
+                                        <input type="text" class="form-control text-center" aria-label="Username" aria-describedby="basic-addon1" value="@produtoCarrinho.QuantidadeProdutoCarrinho">
+                                        <span class="input-group-append btn btn-primary" id="basic-addon1">+</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="price-wrap">
+                                        <var class="price">@((produtoCarrinho.Valor * produtoCarrinho.QuantidadeProdutoCarrinho).ToString("C"))</var>
+                                        <small class="text-muted">(@produtoCarrinho.Valor.ToString("C") cada)</small>
+                                    </div>
+                                </td>
+                                <td class="text-right">
+                                    <a asp-controller="CarrinhoCompra" asp-action="RemoverItem" asp-route-id="@produtoCarrinho.Id" class="btn btn-outline-danger"> × Remover</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row">
+            <aside class="col-md-4">
+                <h4 class="subtitle-doc">
+                    # Cálculo de frete
+                </h4>
+                <div id="code_desc_simple">
+                    <div class="box">
+                        <dl>
+                            <dt>CEP: </dt>
+                            <dd> <input name="cep" type="text" class="form-control" /> </dd>
+                        </dl>
+                        <dl>
+                            <dt><input type="radio" name="frete" value="sedex" /> </dt>
+                            <dd>SEDEX - 99,86</dd>
+                        </dl>
+                        <dl>
+                            <dt><input type="radio" name="frete" value="pac" /> </dt>
+                            <dd>PAC - 85,74</dd>
+                        </dl>
+                    </div>
+                </div>
+            </aside>
+            <aside class="col-md-4">
+                <h4 class="subtitle-doc">
+                    # Resumo
+                </h4>
+                <div id="code_desc_righ">
+                    <div class="box">
+                        <dl class="dlist-align">
+                            <dt>Subtotal: </dt>
+                            <dd>R$ 120,00</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>Frete: </dt>
+                            <dd>R$ 85,74</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>Total:</dt>
+                            <dd>205,74</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>Material:</dt>
+                            <dd>Leather</dd>
+                        </dl>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+</div>

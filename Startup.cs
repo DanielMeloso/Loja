@@ -1,4 +1,6 @@
 using Loja.Database;
+using Loja.Libraries.Automapper;
+using Loja.Libraries.CarrinhoCompra;
 using Loja.Libraries.Email;
 using Loja.Libraries.Login;
 using Loja.Libraries.Middleware;
@@ -27,6 +29,8 @@ namespace Loja
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(config => config.AddProfile<MappingProfile>());
+
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<INewsletterRepository, NewsletterRepository>();
             services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
@@ -42,6 +46,8 @@ namespace Loja
 
             services.AddHttpContextAccessor();
             services.AddScoped<Sessao>();
+            services.AddScoped<Libraries.Cookie.Cookie>();
+            services.AddScoped<CarrinhoCompra>();
             services.AddScoped<LoginCliente>();
             services.AddScoped<LoginColaborador>();
 
