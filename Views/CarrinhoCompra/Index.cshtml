@@ -1,6 +1,7 @@
 ﻿@model List<ProdutoItem>
 @{
     ViewData["Title"] = "Carrinho de Compras";
+    decimal subtotal = 0.0M;
 
 }
 
@@ -47,6 +48,9 @@
                                         <span class="input-group-text btn btn-primary aumentar">+</span>
                                     </div>
                                 </td>
+                                @{
+                                    subtotal += (produtoCarrinho.Valor * produtoCarrinho.QuantidadeProdutoCarrinho);
+                                }
                                 <td>
                                     <div class="price-wrap">
                                         <var class="price">@((produtoCarrinho.Valor * produtoCarrinho.QuantidadeProdutoCarrinho).ToString("C"))</var>
@@ -94,7 +98,7 @@
                     <div class="box">
                         <dl class="dlist-align">
                             <dt>Subtotal: </dt>
-                            <dd>R$ 120,00</dd>
+                            <dd class="subtotal">@subtotal.ToString("C")</dd>
                         </dl>
                         <dl class="dlist-align">
                             <dt>Frete: </dt>

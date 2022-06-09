@@ -94,6 +94,20 @@ function AtualizarQtdeValor(produto) {
 
     var resultado = (produto.valorUnitario * produto.qtdeProdutoCarrinhoNova);
     produto.campoValor.text(numberToReal(resultado));
+
+    AtualizarSubTotal();
+}
+
+function AtualizarSubTotal() {
+    var subTotal = 0;
+    var tagsComPrice = $(".price");
+
+    tagsComPrice.each(function () {
+        var valorReais = parseFloat($(this).text().replace("R$", "").replace(".", "").replace(" ", "").replace(",", "."));
+        subTotal += valorReais;
+    });
+
+    $(".subtotal").text(numberToReal(subTotal));
 }
 
 function MudarImagemPrincipalProduto() {
