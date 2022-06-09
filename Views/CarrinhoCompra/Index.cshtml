@@ -7,6 +7,9 @@
 <div class="container">
     <section class="container" id="order" style="margin-top: 50px">
         <h2 class="title-doc">Carrinho de compras </h2>
+        <div class="alert alert-danger" role="alert" style="display:none;">
+
+        </div>
         <div id="code_cart">
             <div class="card">
                 <table class="table table-hover shopping-cart-wrap">
@@ -36,9 +39,12 @@
                                 </td>
                                 <td class="col-md-2">
                                     <div class="input-group mb-3">
-                                        <span class="input-group-append btn btn-primary" id="basic-addon1">-</span>
-                                        <input type="text" class="form-control text-center" aria-label="Username" aria-describedby="basic-addon1" value="@produtoCarrinho.QuantidadeProdutoCarrinho">
-                                        <span class="input-group-append btn btn-primary" id="basic-addon1">+</span>
+                                        <input type="hidden" class="inputProdutoId" value="@produtoCarrinho.Id" />
+                                        <input type="hidden" class="inputQuantidadeEstoque" value="@produtoCarrinho.Quantidade" />
+                                        <input type="hidden" class="inputValorUnitario" value="@produtoCarrinho.Valor" />
+                                        <span class="input-group-text btn btn-primary diminuir">-</span>
+                                        <input type="text" class="form-control text-center inputQuantidadeProdutoCarrinho" aria-label="Username" value="@produtoCarrinho.QuantidadeProdutoCarrinho">
+                                        <span class="input-group-text btn btn-primary aumentar">+</span>
                                     </div>
                                 </td>
                                 <td>
