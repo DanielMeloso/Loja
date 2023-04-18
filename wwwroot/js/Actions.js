@@ -53,7 +53,6 @@ function AjaxUploadImagemProduto() {
         imagem.attr("src", "/img/loading.gif");
         imagem.addClass("thumb");
 
-
         // Requisição Ajax enviando o formulário criado
         $.ajax({
             type: "POST",

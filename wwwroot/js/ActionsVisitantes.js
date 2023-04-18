@@ -3,7 +3,32 @@
     MudarOrdenacao();
     MudarImagemPrincipalProduto();
     MudarQuantidadeProdutoCarrinho();
+    MascaraCep();
+    AjaxCalcularFrete();
 });
+
+function AjaxCalcularFrete() {
+    $(".btn-calcular-frete").click(function () {
+        var cep = $(".cep").val().replace("-", "");
+
+        $.ajax({
+            type: "GET",
+            url: "/CarrinhoCompra/CalcularFrete?cepDestino=" + cep,
+            error: function (data) {
+                console.info(data);
+                
+            },
+            success: function (data) {
+                console.info(data);
+            }
+
+        });
+    });
+}
+
+function MascaraCep() {
+    $(".cep").mask("00000-000");
+}
 
 function MudarQuantidadeProdutoCarrinho() {
     $("#order .btn-primary").click(function () {

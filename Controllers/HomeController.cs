@@ -150,5 +150,5 @@ namespace Loja.Controllers
 }
 
 /*
- * TODO - Continuar em cap.17 aula 30
+ * TODO - Continuar em cap.17 aula 42 - testar o WS Correios
  */

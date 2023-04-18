@@ -2,6 +2,7 @@ using Loja.Database;
 using Loja.Libraries.Automapper;
 using Loja.Libraries.CarrinhoCompra;
 using Loja.Libraries.Email;
+using Loja.Libraries.Gerenciador.Frete;
 using Loja.Libraries.Login;
 using Loja.Libraries.Middleware;
 using Loja.Libraries.Sessao;
@@ -15,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Net;
 using System.Net.Mail;
+using WSCorreios;
 
 namespace Loja
 {
@@ -48,6 +50,8 @@ namespace Loja
             services.AddScoped<Sessao>();
             services.AddScoped<Libraries.Cookie.Cookie>();
             services.AddScoped<CarrinhoCompra>();
+            services.AddScoped<WSCorreiosCalcularFrete>();
+            services.AddScoped<CalcularPacote>();
             services.AddScoped<LoginCliente>();
             services.AddScoped<LoginColaborador>();
 
@@ -63,6 +67,11 @@ namespace Loja
                     EnableSsl = true
                 };
                 return smtp;
+            });
+            services.AddScoped<CalcPrecoPrazoWSSoap>(option =>
+            {
+                var servico = new CalcPrecoPrazoWSSoapClient(CalcPrecoPrazoWSSoapClient.EndpointConfiguration.CalcPrecoPrazoWSSoap);
+                return servico;
             });
             services.AddScoped<GerenciarEmail>();
 
